@@ -1,0 +1,62 @@
+body{
+    background-image: url("https://media.istockphoto.com/id/1253058234/photo/italian-food-background-with-pasta-ingredients-on-dark-background-top-view-cooking-concept.jpg?s=170667a&w=0&k=20&c=sjfl71vJWVLkiTZTfSmw7YE7sinAp70DVHHHHH76-_Y=");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #000;
+    b
+}
+.header {
+    position:relative;
+    top: 25vh;
+    text-align: center;
+    color: #000;
+
+}
+.search{
+    position: relative;
+    top: 30vh;
+    text-align: center;
+    
+}
+.search_btn{
+    display: flex;
+    align-items: center;
+    background-color: rgb(94, 152, 215);
+}   
+.validator{
+    position: relative;
+    top: 5%;
+    text-align: center;
+}
+.search_results{
+    position: relative;
+    top: 35vh;
+    text-align: center;
+}
+.table_results{
+    padding-right: 5px;
+}
+
+
+
+
+
+.footer{
+    position: absolute;
+    bottom: 1%;
+    padding-left: 10px;
+}
+a:link{
+    color: #000;
+    text-decoration: none;
+}
+.four_spaces{
+    padding-left: 4px;
+}
+/*
+a:hover, a:active{
+    text-decoration: underline;
+}
+a:visited{
+    color:blueviolet;
+} */
