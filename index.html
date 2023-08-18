@@ -22,11 +22,21 @@
         
         <section class="search">
             <div>
-                <p>
-                    <h5>Insert a location:</h5>
-                </p>
                 <form>
-                    <input type="text" autocomplete="off" placeholder="Address" size="20vw">
+                    <label for="food">
+                        <b>
+                            What Are You Craving?
+                        </b>
+                    </label>
+                    <input id="food" name="food" type="text" autocomplete="off" placeholder="Cuisine" size="20vw">
+                    <br>
+                    <label for="location">
+                        <b>
+                            Insert Your Location:
+                        </b>
+                    </label>
+                    <input id="location" name="location" type="text" autocomplete="off" placeholder="Address" size="20vw">
+                    <br>
                     <button type="submit">
                         <img src="images/search_icon.png" width="20px" height="20px" >
                         Search
@@ -34,7 +44,7 @@
                 </form>
             </div>
             <div>
-                <p class="validator">Testing</p>
+                <p id="validator">Testing</p>
             </div>
         </section>
 

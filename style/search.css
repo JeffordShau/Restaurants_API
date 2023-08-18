@@ -1,9 +1,25 @@
+a:link{
+    color: #000;
+    text-decoration: none;
+}
+.footer{
+    position: absolute;
+    bottom: 1%;
+    padding-left: 10px;
+}
+.four_spaces{
+    padding-left: 4px;
+}
 .header {
     position:relative;
     top: 25vh;
     text-align: center;
     color: #000;
 
+}
+input[type=text]{
+    width: 30%;
+    margin: 5px;
 }
 .search{
     position: relative;
@@ -16,11 +32,6 @@
     align-items: center;
     background-color: rgb(94, 152, 215);
 }   
-.validator{
-    position: relative;
-    top: 5%;
-    text-align: center;
-}
 .search_results{
     position: relative;
     top: 35vh;
@@ -29,27 +40,8 @@
 .table_results{
     padding-right: 5px;
 }
-
-
-
-
-
-.footer{
-    position: absolute;
-    bottom: 1%;
-    padding-left: 10px;
+.validator{
+    position: relative;
+    top: 5%;
+    text-align: center;
 }
-a:link{
-    color: #000;
-    text-decoration: none;
-}
-.four_spaces{
-    padding-left: 4px;
-}
-/*
-a:hover, a:active{
-    text-decoration: underline;
-}
-a:visited{
-    color:blueviolet;
-} */

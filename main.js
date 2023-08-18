@@ -1,8 +1,16 @@
-// html interaction
-const validate = document.querySelector(".validator");
-const result_text = docuemnt.querySelector("#hidden_results_text");
-const filter_btn = document.querySelector("#filter_btn");
+// html interaction variables
+const food_type = document.getElementById("food");
+const location = document.getElementById("location");
+
+const validate = document.getElementById("validator");
+
+const result_text = docuemnt.getElementById("hidden_results_text");
+const filter_btn = document.getElementById("filter_btn");
+
 const results = document.querySelector(".table_results");
+
+// receive user input
+
 
 // Yelp Fusion API data and format
 const apiData = {
