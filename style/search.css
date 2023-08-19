@@ -21,17 +21,15 @@ input[type=text]{
     width: 30%;
     margin: 5px;
 }
+#location{
+    left: 5%;
+}
 .search{
     position: relative;
     top: 30vh;
     text-align: center;
     
-}
-.search_btn{
-    display: flex;
-    align-items: center;
-    background-color: rgb(94, 152, 215);
-}   
+}  
 .search_results{
     position: relative;
     top: 35vh;
