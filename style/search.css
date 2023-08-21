@@ -7,6 +7,12 @@ a:link{
     bottom: 1%;
     padding-left: 10px;
 }
+.form{
+    text-align: right;
+    display: inline-block;
+    width: 80%;
+    padding-right: 20%;
+}
 .four_spaces{
     padding-left: 4px;
 }
@@ -18,21 +24,20 @@ a:link{
 
 }
 input[type=text]{
-    width: 30%;
+    width: 50%;
     margin: 5px;
-}
-#location{
-    left: 5%;
 }
 .search{
     position: relative;
     top: 30vh;
     text-align: center;
-    
 }  
 .search_results{
     position: relative;
     top: 35vh;
+    text-align: center;
+}
+.submit_btn{
     text-align: center;
 }
 .table_results{
