@@ -7,7 +7,7 @@ const validate = document.getElementById("validator");
 const result_text = docuemnt.getElementById("hidden_results_text");
 const filter_btn = document.getElementById("filter_btn");
 
-const results = document.querySelector(".table_results");
+const results = document.getElementById("table_results");
 
 // receive user input
 
@@ -19,7 +19,7 @@ const apiData = {
     apiK: "JaBY_6GsL-UILJE5pMp__He_JwlWELzL6TmSUsi2Ht_LZNMeB2liTBIKvKSvSWbn9c0Mzp_nt5cRnXJW8VdpNPsYhBF56cIGY7Ry7WryHShJyyAbgd5hpxgK5f3eZHYx"
 }
 
-// build Yelp API request
+// build Yelp API r89equest
 var request = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
     // request += location;
     // request += "&term=" + searchInput;
