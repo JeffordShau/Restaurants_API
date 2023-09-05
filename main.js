@@ -48,36 +48,38 @@ function buildRequest(cuisine, location, distance) {
     
     console.log(url);
 
-    // fetch(url, {
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         "Authorization": "Bearer JaBY_6GsL-UILJE5pMp__He_JwlWELzL6TmSUsi2Ht_LZNMeB2liTBIKvKSvSWbn9c0Mzp_nt5cRnXJW8VdpNPsYhBF56cIGY7Ry7WryHShJyyAbgd5hpxgK5f3eZHYx",
-    //         "Access-Control-Allow-Origin":"*",
-    //     },
-    // })
-    //     .then((result) => result.json())
-    //     .then((data) =>  {
-    //         data.businesses.forEach((business) => {
-    //             console.log(business);
+    fetch(url, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer JaBY_6GsL-UILJE5pMp__He_JwlWELzL6TmSUsi2Ht_LZNMeB2liTBIKvKSvSWbn9c0Mzp_nt5cRnXJW8VdpNPsYhBF56cIGY7Ry7WryHShJyyAbgd5hpxgK5f3eZHYx",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, Content-Length, X-Requested-With, Accept",
+        },
+    })
+        .then((result) => result.json())
+        .then((data) =>  {
+            data.businesses.forEach((business) => {
+                console.log(business);
 
-    //             businessName.push(business.name);
-    //             url.push(business.url);
+                businessName.push(business.name);
+                url.push(business.url);
 
-    //             if (business.image_url == undefined) imgUrl.push("N/A");
-    //             else imgUrl.push(business.image_url);
+                if (business.image_url == undefined) imgUrl.push("N/A");
+                else imgUrl.push(business.image_url);
                 
-    //             if (business.distance == undefined) distance.push("N/A");
-    //             else distance.push(business.distance);
+                if (business.distance == undefined) distance.push("N/A");
+                else distance.push(business.distance);
 
-    //             if (business.price == undefined) price.push("N/A");
-    //             else price.push(business.price);
+                if (business.price == undefined) price.push("N/A");
+                else price.push(business.price);
 
-    //             if (business.rating == undefined) rating.push("N/A");
-    //             else rating.push(business.rating);
+                if (business.rating == undefined) rating.push("N/A");
+                else rating.push(business.rating);
 
 
-    //         })
-    //     })
+            })
+        })
     
 }
 
