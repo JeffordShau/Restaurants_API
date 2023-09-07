@@ -1,15 +1,12 @@
 // html interaction variables
 const searchForm = document.getElementById("form");
 const validate = document.getElementById("validator");
-
-// store restaurant data
-var businessName = [];
-var imgUrl = [];
-var url = [];
-var address = [];
-var rating = [];
-var price = [];
-var distance = [];
+const collapse = document.getElementsByClassName("collapsible");
+const open_btn = document.getElementsByClassName("open_btn");
+const rating_btn = document.getElementsByClassName("rating_btn");
+const distance_btn = document.getElementsByClassName("distance_btn");
+const price_btn = document.getElementsByClassName("price_btn");
+var counter = 0;
 
 // receive user input
 searchForm.addEventListener("submit", function(e) {
@@ -26,6 +23,9 @@ searchForm.addEventListener("submit", function(e) {
         document.getElementById("validator").innerHTML = 
             "Missing Input!";
     }
+    else if (distance * 1609 > 40000) {
+        document.getElementById("validator").innerHTML = "Max Distance 24 Miles!";
+    }
     else {
         document.getElementById("validator").innerHTML = "";
         buildRequest(cuisine, location, distance);
@@ -34,57 +34,86 @@ searchForm.addEventListener("submit", function(e) {
 
 // build Yelp API request
 function buildRequest(cuisine, location, distance) {
+    const displayBlock = document.getElementById("display_results");
+
     console.log("Test", cuisine);
     console.log("Test", location);
-    const cuisineValue = String(cuisine).split(" ").join("+");
-    const locationValue = String(location).split(" ").join("+");
+    const cuisineValue = String(cuisine).trim().split(" ").join("+");
+    const locationValue = String(location).trim().split(" ").join("+");
+    distance = Math.round(distance * 1609);
 
-    var url = "https://api.yelp.com/v3/businesses/search?";
+    var url = "https://glacial-thicket-42400-4c2c3934b324.herokuapp.com/https://api.yelp.com/v3/businesses/search?=";
     url += "&location=" + locationValue;
     url += "&term=" + cuisineValue;
     url += "&radius=" + distance;
     url += "&categories=" + "restaurants";
-    url += "$limit=50&offset=50";
     
     console.log(url);
 
     fetch(url, {
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer JaBY_6GsL-UILJE5pMp__He_JwlWELzL6TmSUsi2Ht_LZNMeB2liTBIKvKSvSWbn9c0Mzp_nt5cRnXJW8VdpNPsYhBF56cIGY7Ry7WryHShJyyAbgd5hpxgK5f3eZHYx",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization, Content-Length, X-Requested-With, Accept",
+            // "Access-Control-Allow-Origin": "*",
+            "Origin": "https://api.yelp.com/v3/",
+            // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+            // "Access-Control-Allow-Headers": "Content-Type, Authorization, Content-Length, X-Requested-With, Accept",
+            // "Access-Control-Allow-Credentials": "true",
         },
     })
         .then((result) => result.json())
         .then((data) =>  {
-            data.businesses.forEach((business) => {
-                console.log(business);
-
-                businessName.push(business.name);
-                url.push(business.url);
-
-                if (business.image_url == undefined) imgUrl.push("N/A");
-                else imgUrl.push(business.image_url);
+            console.log(data);
+            validate.innerHTML = data["businesses"].length + " Results Found!";
+            displayBlock.innerText = "";
+            data["businesses"].forEach(business => {
+                let row = document.createElement("tr");
                 
-                if (business.distance == undefined) distance.push("N/A");
-                else distance.push(business.distance);
+                // create cells for each piece of data
+                let c1 = row.insertCell(0);
+                let c2 = row.insertCell(1);
 
-                if (business.price == undefined) price.push("N/A");
-                else price.push(business.price);
+                // add image to c1
+                let img = document.createElement("img");
+                img.style.height = "250px";
+                img.style.width = "250px";
+                img.src = business.image_url;
+                c2.appendChild(img);
 
-                if (business.rating == undefined) rating.push("N/A");
-                else rating.push(business.rating);
+                // add data to c2
+                let distance_mi = Math.round(10 * (business.distance / 1609.34)) / 10;
+                let open_status;
+                if (business.is_closed) {
+                    open_status = "Yes";
+                }
+                else {
+                    open_status = "No";
+                }
+                var buildString = "";
+                buildString += "Business: " + business.name + "\n";
+                buildString += "Location: " + business.location.display_address + "\n";
+                buildString += "Distance: " + distance_mi + " miles\n";
+                buildString += "Price: " + business.price + "\n";
+                buildString += "Phone: " + business.display_phone + "\n";
+                buildString += "Rating: " + business.rating + " stars from " + business.review_count + " customers\n";
+                buildString += "Open Status: " + open_status + "\n";
 
+                c1.innerText = buildString;
+                console.log(buildString);
 
-            })
-        })
-    
+                // add cells to row
+                row.appendChild(c1);
+                row.appendChild(c2);
+
+                // add row to table
+                displayBlock.appendChild(row);
+
+                counter += 1;
+            });
+        });
+    if (counter > 0) {
+        displayBlock.scrollIntoView();
+    }
+    counter = 0;
 }
-
-
-const result_text = document.getElementById("hidden_results_text");
-const filter_btn = document.getElementById("filter_btn");
-
-const results = document.getElementById("table_results");

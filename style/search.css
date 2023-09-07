@@ -2,9 +2,21 @@ a:link{
     color: #000;
     text-decoration: none;
 }
+#display_container{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    height: 600px;
+    overflow-y: scroll;
+    border: none;
+    background-color: azure;
+}
 .footer{
-    position: absolute;
-    bottom: 1%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     padding-left: 10px;
 }
 #form{
