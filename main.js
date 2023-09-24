@@ -85,10 +85,10 @@ function buildRequest(cuisine, location, distance) {
                 let distance_mi = Math.round(10 * (business.distance / 1609.34)) / 10;
                 let open_status;
                 if (business.is_closed) {
-                    open_status = "Yes";
+                    open_status = "No";
                 }
                 else {
-                    open_status = "No";
+                    open_status = "Yes";
                 }
                 var buildString = "";
                 buildString += "Business: " + business.name + "\n";
